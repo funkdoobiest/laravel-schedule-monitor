@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MonitoredScheduledTaskLogItem extends Model
 {
+    protected $table = 'admin_monitored_scheduled_task_log_items';
+
     public $guarded = [];
 
     public const TYPE_STARTING = 'starting';

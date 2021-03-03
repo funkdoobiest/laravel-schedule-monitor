@@ -16,6 +16,8 @@ use Spatie\ScheduleMonitor\Support\ScheduledTasks\ScheduledTaskFactory;
 
 class MonitoredScheduledTask extends Model
 {
+    protected $table = 'admin_monitored_scheduled_tasks';
+
     public $guarded = [];
 
     protected $casts = [

@@ -20,10 +20,8 @@ class SyncCommand extends Command
     {
         $this->info('Start syncing schedule...' . PHP_EOL);
 
-        $scheduledTasks = ScheduledTasks::createForSchedule();
-
         $this
-            ->syncScheduledTasksWithDatabase($scheduledTasks)
+            ->syncScheduledTasksWithDatabase()
             ->syncMonitoredScheduledTaskWithOhDear();
 
         $monitoredScheduledTasksCount = MonitoredScheduledTask::count();
@@ -45,6 +43,7 @@ class SyncCommand extends Command
                     [
                         'type' => $task->type(),
                         'cron_expression' => $task->cronExpression(),
+                        'timezone' => $task->timezone(),
                         'grace_time_in_minutes' => $task->graceTimeInMinutes(),
                     ]
                 );
@@ -82,7 +81,7 @@ class SyncCommand extends Command
                     'type' => 'cron',
                     'cron_expression' => $monitoredScheduledTask->cron_expression,
                     'grace_time_in_minutes' => $monitoredScheduledTask->grace_time_in_minutes,
-                    'server_timezone' => config('app.timezone'),
+                    'server_timezone' => $monitoredScheduledTask->timezone,
                     'description' => '',
                 ];
             })

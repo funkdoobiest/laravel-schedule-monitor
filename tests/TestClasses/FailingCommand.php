@@ -2,6 +2,7 @@
 
 namespace Spatie\ScheduleMonitor\Tests\TestClasses;
 
+use Exception;
 use Illuminate\Console\Command;
 
 class FailingCommand extends Command
@@ -12,6 +13,6 @@ class FailingCommand extends Command
 
     public function handle()
     {
-        throw new \Exception('failing');
+        throw new Exception('failing');
     }
 }

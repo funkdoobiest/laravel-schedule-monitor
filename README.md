@@ -8,13 +8,11 @@ This package will monitor your Laravel schedule. It will write an entry to a log
 
 ![screenshot](https://github.com/spatie/laravel-schedule-monitor/blob/master/docs/list-with-failure.png)
 
-Optionally, this package can sync your schedule with [Oh Dear](https://ohdear.app). Oh Dear will send you a notification whenever a scheduled task doesn't run on time or fails.
+This package can also sync your schedule with [Oh Dear](https://ohdear.app). Oh Dear will send you a notification whenever a scheduled task doesn't run on time or fails.
 
 ## Support us
 
-Learn how to create a package like this one, by watching our premium video course:
-
-[![Laravel Package training](https://spatie.be/github/package-training.jpg)](https://laravelpackage.training)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-schedule-monitor.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-schedule-monitor)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
@@ -93,9 +91,7 @@ return [
 
 #### Cleaning the database
 
-
 You must register the `schedule-monitor:clean` tasks in your console kernel. This command will clean up old records from the schedule monitor log table.
-
 
 ```php
 // app/Console/Kernel.php
@@ -190,15 +186,13 @@ protected function schedule(Schedule $schedule)
 
 This package can sync your schedule with the [Oh Dear](https://ohdear.app) cron check. Oh Dear will send you a notification whenever a scheduled task does not finish on time.
 
-This cron check at Oh Dear is currently in beta, and you'll have to [request](mailto:support@ohdear.app) the team at Oh Dear for early access to use this feature.
-
 To get started you will first need to install the Oh Dear SDK.
- 
+
 ```bash
-composer require ohdearapp/ohdear-php-sdk:v3
+composer require ohdearapp/ohdear-php-sdk
 ```
- 
- Next you, need to make sure the `api_token` and `site_id` keys of the `schedule-monitor` are filled with an API token, and an Oh Dear site id. To verify that these values hold correct values you can run this command.
+
+Next you, need to make sure the `api_token` and `site_id` keys of the `schedule-monitor` are filled with an API token, and an Oh Dear site id. To verify that these values hold correct values you can run this command.
 
 ```bash
 php artisan schedule-monitor:verify
@@ -233,14 +227,23 @@ protected function schedule(Schedule $schedule)
 }
 ```
 
+## Unsupported methods
+
+Currently, this package does not work for tasks that use these methods:
+
+- `between`
+- `unlessBetween`
+- `when`
+- `skip`
+
 ## Third party scheduled task monitors
 
 We assume that, when your scheduled tasks do not run properly, a scheduled task that sends out notifications would probably not run either.  That's why this package doesn't send out notifications by itself.
 
 These services can notify you when scheduled tasks do not run properly:
 
-- [Oh Dear](https://ohdear.app) (in closed beta)
-- [thenping.me](https://thenping.me) (in closed beta)
+- [Oh Dear](https://ohdear.app)
+- [thenping.me](https://thenping.me)
 - [Cronbox](https://cronbox.app)
 - [Healthchecks.io](https://healthchecks.io)
 - [Cronitor](https://cronitor.io)
@@ -261,7 +264,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Security
 
